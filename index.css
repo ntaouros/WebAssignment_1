@@ -1,0 +1,12 @@
+ /*reset? */
+
+h1 {
+	text-align: center;
+}
+
+button {
+	vertical-align: middle;
+  	display: block;
+  	width: 50%;
+  	margin: 0 auto;
+}
