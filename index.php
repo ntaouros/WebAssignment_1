@@ -1,9 +1,23 @@
+<style>
+fieldset {
+  display: block;
+      margin: 0 10px 0 10px;
+
+    padding-top: 0;
+    padding-bottom: 0.625em;
+    padding-left: 0;
+    padding-right: 0.75em;
+    border: 0;
+}
+</style>
+
 <?php
+	session_start();
 	include 'DBconnect.php'; 
 	include 'Question.php'; 
 	include 'Question_choice.php'; 
-	$now = new DateTime();
-	echo $now->format('Y-m-d H:i:s');
+	$_SESSION['start'] = new DateTime();
+	//echo $now->format('Y-m-d H:i:s');
 	
 	//Object Testing
 	$choice= new Question_choice(1,1,1,1);
@@ -44,19 +58,21 @@
 		echo $i .". ". $quest->getQuestion() ."<br> ";
 				
 		 foreach($quest->getQuestion_choice() as $choice) {
+			echo "<fieldset  id=\"".$quest->getId()."\">";
 			echo "<ul class=\"answers\">";
-			echo "<input type=\"radio\" name=\"q1\" ><label for=\"q1a\">";
+			echo "<input type=\"radio\" name=\"".$choice->getChoice()."\" ><label for=\"q1a\">";
 			echo $choice->getChoice();
 			echo "</label><br/> ";
 			echo "</ul>";
+			echo "</fieldset>";
+
 		}
 		$i++;
 	}
-	$newNow = new DateTime();
-	echo $newNow->format('Y-m-d H:i:s');
 	
 	
-	echo "<form action=\"http://localhost:81/WebAssignment/PHP/index.php\" method=\"get\"> 
+	
+	echo "<form action=\"http://localhost:81/WebAssignment_1/PHP/submit.php\" method=\"get\"> 
 		<input type=\"submit\" value=\"Submit\">
 	</form>";
 	
