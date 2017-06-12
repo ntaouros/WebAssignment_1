@@ -26,7 +26,7 @@
 		}
 	 
 		public function isRight() {
-		  return $this->Choice;
+		  return $this->isRight;
 		}
 	 
 		public function setId($ID) {
